@@ -1,0 +1,36 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import scipy.stats as stats
+
+data = pd.DataFrame({
+    "Age": [23, 25, 27, 30, 32, 35, 28, 29, 31,
+            26, 24, 33, 36, 40, 38, 22, 34, 37],
+    "Fat": [15, 18, 20, 22, 25, 28, 21, 23, 24,
+            19, 17, 27, 30, 32, 29, 16, 26, 31]
+})
+
+print("Mean:")
+print(data.mean())
+
+print("\nMedian:")
+print(data.median())
+
+print("\nStandard Deviation:")
+print(data.std())
+
+# Boxplot
+data.boxplot()
+plt.title("Boxplot")
+plt.show()
+
+# Scatter plot
+plt.scatter(data["Age"], data["Fat"])
+plt.xlabel("Age")
+plt.ylabel("% Fat")
+plt.title("Age vs Body Fat")
+plt.show()
+
+# Q-Q plot
+stats.probplot(data["Fat"], dist="norm", plot=plt)
+plt.title("Q-Q Plot")
+plt.show()
