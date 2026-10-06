@@ -1,0 +1,27 @@
+from sklearn.neighbors import KNeighborsClassifier
+
+X = [
+    [1, 2],
+    [2, 3],
+    [3, 4],
+    [5, 6],
+    [6, 7],
+    [7, 8]
+]
+
+y = [0, 0, 0, 1, 1, 1]
+
+k = int(input("Enter k: "))
+
+model = KNeighborsClassifier(n_neighbors=k)
+model.fit(X, y)
+
+a = float(input("Enter symptom 1: "))
+b = float(input("Enter symptom 2: "))
+
+prediction = model.predict([[a, b]])
+
+if prediction[0] == 1:
+    print("Patient has the condition")
+else:
+    print("Patient does not have the condition")
