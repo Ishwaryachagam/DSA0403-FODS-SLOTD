@@ -1,0 +1,23 @@
+import numpy as np
+from scipy.stats import ttest_ind
+import matplotlib.pyplot as plt
+
+control = np.array([70, 72, 68, 75, 71, 69, 73])
+treatment = np.array([80, 82, 78, 85, 81, 79, 83])
+
+t_stat, p_value = ttest_ind(control, treatment)
+
+print("T-statistic:", t_stat)
+print("P-value:", p_value)
+
+if p_value < 0.05:
+    print("Treatment has a significant effect")
+else:
+    print("Treatment does not have a significant effect")
+
+plt.bar(["Control", "Treatment"],
+        [control.mean(), treatment.mean()])
+
+plt.ylabel("Mean Result")
+plt.title("Treatment Comparison")
+plt.show()
