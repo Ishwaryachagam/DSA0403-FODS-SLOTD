@@ -1,0 +1,15 @@
+import numpy as np
+from scipy.stats import ttest_ind
+
+A = np.array([0.10, 0.12, 0.15, 0.11, 0.14, 0.13])
+B = np.array([0.18, 0.20, 0.19, 0.17, 0.21, 0.18])
+
+t_stat, p_value = ttest_ind(A, B)
+
+print("T-statistic:", t_stat)
+print("P-value:", p_value)
+
+if p_value < 0.05:
+    print("Significant difference")
+else:
+    print("No significant difference")
