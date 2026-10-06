@@ -1,0 +1,22 @@
+import pandas as pd
+from collections import Counter
+import re
+
+reviews = pd.DataFrame({
+    "Review": [
+        "Good product and good quality",
+        "Very good product",
+        "Product quality is excellent"
+    ]
+})
+
+text = " ".join(reviews["Review"]).lower()
+
+words = re.findall(r"\b[a-z]+\b", text)
+
+frequency = Counter(words)
+
+print("Word Frequency:")
+
+for word, count in frequency.items():
+    print(word, ":", count)
