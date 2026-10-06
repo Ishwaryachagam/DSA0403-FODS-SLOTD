@@ -1,0 +1,14 @@
+import pandas as pd
+
+data = pd.DataFrame({
+    "Product": ["Laptop", "Phone", "Laptop", "Tablet",
+                "Phone", "Laptop", "Camera", "Phone"],
+    "Quantity": [5, 10, 8, 4, 7, 6, 3, 9]
+})
+
+top5 = data.groupby("Product")["Quantity"].sum().sort_values(
+    ascending=False
+).head(5)
+
+print("Top 5 Products:")
+print(top5)
