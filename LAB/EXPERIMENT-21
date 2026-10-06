@@ -1,0 +1,24 @@
+import pandas as pd
+import numpy as np
+from scipy import stats
+
+data = pd.read_csv("rare_elements.csv")
+
+n = int(input("Enter sample size: "))
+confidence = float(input("Enter confidence level (example 0.95): "))
+precision = float(input("Enter desired precision: "))
+
+sample = data.iloc[:n, 0]
+
+mean = np.mean(sample)
+
+ci = stats.t.interval(
+    confidence,
+    len(sample) - 1,
+    loc=mean,
+    scale=stats.sem(sample)
+)
+
+print("Point Estimate:", mean)
+print("Confidence Interval:", ci)
+print("Desired Precision:", precision)
