@@ -1,0 +1,22 @@
+import numpy as np
+from scipy import stats
+
+drug = np.array([8, 10, 7, 9, 11, 12, 8, 9, 10, 7])
+placebo = np.array([3, 4, 5, 2, 6, 4, 3, 5, 4, 2])
+
+drug_ci = stats.t.interval(
+    0.95,
+    len(drug) - 1,
+    loc=np.mean(drug),
+    scale=stats.sem(drug)
+)
+
+placebo_ci = stats.t.interval(
+    0.95,
+    len(placebo) - 1,
+    loc=np.mean(placebo),
+    scale=stats.sem(placebo)
+)
+
+print("Drug 95% Confidence Interval:", drug_ci)
+print("Placebo 95% Confidence Interval:", placebo_ci)
